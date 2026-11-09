@@ -4,22 +4,43 @@
     "slug": "react-native-tourism",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "infoPlist": {
+        "NSCameraUsageDescription": "O aplicativo usa a câmera para registrar fotografias da viagem.",
+        "NSLocationWhenInUseUsageDescription": "O aplicativo usa a localização para registrar o local visitado.",
+        "NSMotionUsageDescription": "O aplicativo usa o acelerômetro para exibir a movimentação do aparelho."
+      }
     },
     "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
-      },
-      "predictiveBackGestureEnabled": false
+      "permissions": [
+        "CAMERA",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    }
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "O aplicativo usa a câmera para registrar fotografias da viagem."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "O aplicativo usa a localização para registrar o local visitado."
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "savePhotosPermission": "O aplicativo salva as fotografias capturadas na galeria.",
+          "isAccessMediaLocationEnabled": false
+        }
+      ]
+    ]
   }
 }
